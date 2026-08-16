@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block title %}Submit task{% endblock %}
+{% block header %}Submit: {{ task.title }}{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" accept=".pdf,.doc,.docx,.txt">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit work</button>
+</form>
+{% endblock %}

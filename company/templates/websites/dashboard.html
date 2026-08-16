@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block header %}{{ employee.get_status_display }} dashboard{% endblock %}
+{% block content %}
+{% if employee.status == 'admin' %}
+<section>
+    <h2>Task management</h2>
+    <p><a href="{% url 'create_task' %}">Create a new task</a></p>
+</section>
+{% endif %}
+<section>
+    <h2>{% if employee.status == 'admin' %}All tasks{% else %}My tasks{% endif %}</h2>
+    {% for task in tasks %}
+    <article class="task">
+        <div><h3>{{ task.title }}</h3><p>{{ task.description|default:"No description" }}</p>
+            {% if employee.status == 'admin' %}<small>Assigned to {{ task.assigned_to.user.username }}</small>{% endif %}
+            {% if task.deadline %}<small>Due {{ task.deadline }}</small>{% endif %}
+        </div>
+        <div><strong class="status status-{{ task.status }}">{{ task.get_status_display }}</strong>
+            {% if employee.status == 'employee' and task.status != 'finished' %}<a href="{% url 'submit_task' task.id %}">Submit work</a>{% endif %}
+            {% if employee.status == 'admin' and task.status == 'submitted' %}       
+            {% if task.submission %}
+                <a href="{{ task.submission.url }}" target="_blank">
+                    View Submission
+                </a>
+            {% else %}
+                <span>No file submitted</span>
+            {% endif %}
+
+            <form method="post" action="{% url 'verify_task' task.id %}">
+                {% csrf_token %}
+                <button type="submit">Verify</button>
+            </form>
+            {% endif %}
+        </div>
+    </article>
+    {% empty %}<p>No tasks yet.</p>{% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+ {% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+<body>
+    <div class='container'>
+        <button><a href="{% url 'home' %}">IBMS</a></button><br><br>
+        {% if user.is_authenticated %}
+            <Button><a href="{% url 'dash_board_view' %}">Dashboard</a></Button><br><br>
+            <button><a href="{% url 'logout' %}">Log out</a></button><br><br>
+        {% else %}
+            <button><a href="{% url 'login' %}">Log in</a></button><br><br>
+            <button><a href="{% url 'register' %}">Register</a></button><br><br>
+        {% endif %}
+    </div>
+    <div>
+        <h1>{% block header %}{% endblock %}</h1>
+    </div>    
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+   
+</body>
+</html>

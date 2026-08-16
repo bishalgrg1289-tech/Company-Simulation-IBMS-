@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block title %}Assign task{% endblock %}
+{% block header %}Assign task{% endblock %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Assign task</button>
+</form>
+{% endblock %}

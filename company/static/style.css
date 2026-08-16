@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #18212b;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    background-color: #172a3a;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.container a {
+    color: #ffffff;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+body > div {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+form {
+    max-width: 560px;
+}
+
+label, input, textarea, select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    margin: 12px 0;
+}
+
+input, textarea, select {
+    margin-top: 6px;
+    padding: 9px;
+    border: 1px solid #b8c2cc;
+    border-radius: 4px;
+}
+
+button, a {
+    font: inherit;
+}
+
+button {
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 4px;
+    background: #167d8d;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 14px 0;
+    padding: 18px;
+    background: #ffffff;
+    border-left: 5px solid #b8c2cc;
+}
+
+.task small {
+    display: block;
+    margin-top: 6px;
+}
+
+.status {
+    display: inline-block;
+    min-width: 82px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.status-pending { background: #fff0c2; color: #735600; }
+.status-submitted { background: #d9eff5; color: #0d5361; }
+.status-finished { background: #d8f0df; color: #1d6030; }
+
+.task a {
+    display: block;
+    margin-top: 12px;
+    color: #0d6472;
+}
